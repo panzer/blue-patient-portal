@@ -11,16 +11,10 @@ const routes: Routes = [
     path: '/',
     title: 'Home',
     icon: HomeIcon,
-    routes: [
-      {
-        component: asyncComponentLoader(() => import('@/pages/Welcome')),
-        path: 'home/:id',
-      },
-      {
-        component: asyncComponentLoader(() => import('@/pages/Page4')),
-        path: 'home/:id/add',
-      },
-    ],
+  },
+  {
+    component: asyncComponentLoader(() => import('@/pages/NewPatient')),
+    path: 'home/:id/add',
   },
   {
     component: asyncComponentLoader(() => import('@/pages/Page1')),
@@ -29,14 +23,12 @@ const routes: Routes = [
     icon: Help,
   },
   {
-    component: asyncComponentLoader(() => import('@/pages/Page2')),
+    component: asyncComponentLoader(() => import('@/pages/AppointmentsList')),
     path: '/appointments/:id',
-    routes: [
-      {
-        component: asyncComponentLoader(() => import('@/pages/Page3')),
-        path: 'new',
-      },
-    ],
+  },
+  {
+    component: asyncComponentLoader(() => import('@/pages/NewAppointment')),
+    path: '/appointments/:id/new',
   },
 ];
 

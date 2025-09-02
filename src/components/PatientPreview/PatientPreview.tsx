@@ -4,23 +4,12 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PersonIcon from '@mui/icons-material/Person';
 import { Avatar, Box, Card, List, ListItem, Stack, Typography } from '@mui/material';
 
+import { Patient } from '@/api/types';
 import { ageString, relativeDateTime, shortDateTime } from '@/utils/datetime';
 
 import { ColumnAlignedStart } from '../styled';
 
-type Appointment = {
-  date: string; // ISO string or formatted date
-  description: string;
-};
-
-type PatientPreviewProps = {
-  id: string;
-  name: string;
-  dateOfBith: string | number;
-  profilePictureUrl?: string;
-  upcomingAppointments?: Appointment[];
-  tintColor?: string;
-};
+type PatientPreviewProps = Patient & { tintColor?: string };
 
 const DEFAULT_TINT = 'primary';
 
@@ -29,7 +18,7 @@ const PatientPreview: React.FC<PatientPreviewProps> = ({
   name,
   dateOfBith,
   profilePictureUrl,
-  upcomingAppointments = [],
+  appointments: upcomingAppointments = [],
   tintColor = DEFAULT_TINT,
 }) => {
   return (
