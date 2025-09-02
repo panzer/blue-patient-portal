@@ -1,6 +1,8 @@
 # Blue Patient Portal
 Example registration and appointment application. Built for parents or caregivers to manage their child's care.
 
+<img src="public/preview.png" alt="App preview" style="max-height: 320px; display: block;" />
+
 ## Setup and Run Locally
 Node v22+ recommended. Use `nvm` or whatever you are comfortable with on your system.
 
