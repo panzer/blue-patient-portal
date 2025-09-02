@@ -58,6 +58,8 @@ In order to build a product that is future proof, let's think about what feature
   - Privacy concern if we state during registration "patient already exists". Then, this gives away info that this person is a patient
 - Among all Patients under a Parent/Caregivers care, create a calendar of upcoming appointments
   - May be optimized by storing appointments differently in DB
+  - Show appointment availability while booking an appointment
+  - Deny appointments that conflict with an existing appointment
 - Appointment location and provider info
 - If a Patient grows up to become a Parent/Caregiver, do we still want their info linked in some way?
 - Could a Patient have their own log-in?

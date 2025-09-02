@@ -1,7 +1,7 @@
 {
-  "name": "React PWA",
-  "short_name": "reactpwa",
-  "description": "Starter kit for modern web applications",
+  "name": "Blue Patient Portal",
+  "short_name": "patientportal",
+  "description": "Example patient portal app in React, TS, MUI, Jotai",
   "theme_color": "#ffffff",
   "icons": [
     {
