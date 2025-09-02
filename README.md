@@ -1,6 +1,17 @@
 # Blue Patient Portal
 Example registration and appointment application. Built for parents or caregivers to manage their child's care.
 
+## Setup and Run Locally
+Node v22+ recommended. Use `nvm` or whatever you are comfortable with on your system.
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
 ## Project Objective
 Three major functionalities will be achieved in this proof of concept:
 
