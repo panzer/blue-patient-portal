@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 import {
@@ -11,20 +12,41 @@ import {
   Typography,
 } from '@mui/material';
 
-import { urlAppointments } from '@/api';
+import { urlAppointments, urlPatients } from '@/api';
+import { DbPatient } from '@/api/types';
+import PatientAvatar from '@/components/PatientAvatar';
 import { FullSizeCentered } from '@/components/styled';
 
 function Page3() {
   const params = useParams();
-  const id = params.id;
+  const patientId = params.id;
+
+  const [patientData, setPatientData] = useState<DbPatient>();
+
+  useEffect(() => {
+    if (!patientId) return;
+    const fetchPatient = async () => {
+      try {
+        const response = await fetch(`${urlPatients}${patientId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch patient data');
+        }
+        const data = await response.json();
+        setPatientData(data);
+      } catch (error) {
+        console.error('Error fetching patient data:', error);
+      }
+    };
+    fetchPatient();
+  }, [patientId]);
 
   return (
     <>
       <meta name="title" content="New Appointment" />
       <FullSizeCentered>
+        <PatientAvatar />
         <Typography variant="h3">New Appointment</Typography>
-        {/* TODO: Fetch and show patient name */}
-        <Typography variant="h5">For _Name_</Typography>
+        <Typography variant="h5">For {patientData?.first_name ?? '...'}</Typography>
         <Box
           component="form"
           sx={{
@@ -74,7 +96,7 @@ function Page3() {
               labelId="patient-label"
               name="patient"
               label="Patient"
-              defaultValue={`http://127.0.0.1:8000/patients/${id}/`}
+              defaultValue={`http://127.0.0.1:8000/patients/${patientId}/`}
             ></Select>
           </FormControl>
 

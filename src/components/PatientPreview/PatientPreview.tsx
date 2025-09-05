@@ -1,12 +1,12 @@
 import React from 'react';
 
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import PersonIcon from '@mui/icons-material/Person';
-import { Avatar, Box, Card, List, ListItem, Stack, Typography } from '@mui/material';
+import { Box, Card, List, ListItem, Stack, Typography } from '@mui/material';
 
 import { Patient } from '@/api/types';
 import { ageString, relativeDateTime, shortDateTime } from '@/utils/datetime';
 
+import PatientAvatar from '../PatientAvatar';
 import { ColumnAlignedStart } from '../styled';
 
 type PatientPreviewProps = Patient & { tintColor?: string };
@@ -33,18 +33,7 @@ const PatientPreview: React.FC<PatientPreviewProps> = ({
         minWidth: 320,
       }}
     >
-      <Avatar
-        src={profilePictureUrl}
-        alt={name}
-        sx={{
-          width: 64,
-          height: 64,
-          bgcolor: profilePictureUrl ? undefined : `${tintColor}.light`,
-          mr: 2,
-        }}
-      >
-        {!profilePictureUrl ? <PersonIcon fontSize="large" /> : null}
-      </Avatar>
+      <PatientAvatar imageUrl={profilePictureUrl} tint={tintColor} />
       <Box sx={{ flex: 1 }}>
         <Typography variant="h6" fontWeight={700} color={`${tintColor}.dark`}>
           {name}
